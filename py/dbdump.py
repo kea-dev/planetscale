@@ -32,6 +32,7 @@ cnx = mysql.connector.connect(user=username, password=password,
                               host=args.host, port=args.port,
                               database=args.database)
 
+# Do your database things
 cursor = cnx.cursor()
 cursor.execute('SHOW TABLES')
 table_names = [table[0] for table in cursor]
@@ -42,5 +43,6 @@ for table_name in table_names:
     print(result[1].replace('CREATE TABLE', 'CREATE TABLE IF NOT EXISTS') + ';\n')
     print()
 
+# Bye!
 cursor.close()
 cnx.close()
